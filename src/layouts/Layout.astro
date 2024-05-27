@@ -55,18 +55,18 @@ else year = `-${year}`
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{docTitle}</title>
-    <link rel="icon" href="/assets/favicon.png" />
+    <link rel="icon" href="assets/favicon.png" />
     { !!headItems ? <div set:html={headItems}></div> : '' }
-    <script src="/scripts/cookies.js" is:inline></script>
-    <script src="/scripts/index.js" is:inline></script>
-    <script src="/scripts/authentication.js" is:inline></script>
-    <script src="/scripts/511Request.js" is:inline></script>
-    <script src="/scripts/notificationManager.js" is:inline></script>
+    <script src="scripts/cookies.js" is:inline></script>
+    <script src="scripts/index.js" is:inline></script>
+    <script src="scripts/authentication.js" is:inline></script>
+    <script src="scripts/511Request.js" is:inline></script>
+    <script src="scripts/notificationManager.js" is:inline></script>
     <base href="https://adarshrkumar.github.io/forst-app-design">
     {
       scripts.map(function(s, i) {
         if (s.location === 'head' && s.name) {
-          return <script src={`/scripts/${s.name}.js`}></script>
+          return <script src={`scripts/${s.name}.js`}></script>
         }
       })
     }
@@ -82,13 +82,13 @@ else year = `-${year}`
       </main>
       <footer class="footer" site-title={sTitle} current-year={year}>
         <nav class="nav" hidden>
-          <a class="link" href="/tracker">
-            <img class="icon" src="/icons/map.svg">
+          <a class="link" href="tracker">
+            <img class="icon" src="icons/map.svg">
           </a>
-          <a class="link" href="/directions">
-            <img class="icon" src="/icons/location.svg">
+          <a class="link" href="directions">
+            <img class="icon" src="icons/location.svg">
           </a>
-          <!-- <a class="link" href="/book"><img class="icon" src="/icons/book-online.svg"></a><a class="link" href="/notifications"><img class="icon" src="/icons/notification.svg"></a><a class="link" href="/more"><img class="icon" src="/icons/more-horiz.svg"></a><a class="link" href="/settings"><img class="icon" src="/icons/settings.svg"></a> -->
+          <!-- <a class="link" href="book"><img class="icon" src="icons/book-online.svg"></a><a class="link" href="notifications"><img class="icon" src="icons/notification.svg"></a><a class="link" href="more"><img class="icon" src="icons/more-horiz.svg"></a><a class="link" href="settings"><img class="icon" src="icons/settings.svg"></a> -->
         </nav>
       </footer>
     </div>
@@ -99,15 +99,15 @@ else year = `-${year}`
         <button class="btn">OK</button>
       </content>
     </dialog>
-    <script src="/scripts/modal.js" is:inline></script>
-    <script src="/scripts/select.js" is:inline></script>
+    <script src="scripts/modal.js" is:inline></script>
+    <script src="scripts/select.js" is:inline></script>
     {
       scripts.map(function(s, i) {
         if (s.location !== 'head' && s.name) {
-          return <script src={`/scripts/${s.name}.js`}></script>
+          return <script src={`scripts/${s.name}.js`}></script>
         }
       })
     }
-    <!-- <script src="/scripts/eruda.js" is:inline></script> -->
+    <!-- <script src="scripts/eruda.js" is:inline></script> -->
   </body>
 </html>
