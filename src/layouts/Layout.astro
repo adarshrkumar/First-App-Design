@@ -57,16 +57,16 @@ else year = `-${year}`
     <title>{docTitle}</title>
     <link rel="icon" href="assets/favicon.png" />
     { !!headItems ? <div set:html={headItems}></div> : '' }
-    <script src="scripts/cookies.js" is:inline></script>
-    <script src="scripts/index.js" is:inline></script>
-    <script src="scripts/authentication.js" is:inline></script>
-    <script src="scripts/511Request.js" is:inline></script>
-    <script src="scripts/notificationManager.js" is:inline></script>
+    <script src="../scripts/cookies.js" is:inline></script>
+    <script src="../scripts/index.js" is:inline></script>
+    <script src="../scripts/authentication.js" is:inline></script>
+    <script src="../scripts/511Request.js" is:inline></script>
+    <script src="../scripts/notificationManager.js" is:inline></script>
     <base href="https://adarshrkumar.github.io/First-App-Design/">
     {
       scripts.map(function(s, i) {
         if (s.location === 'head' && s.name) {
-          return <script src={`scripts/${s.name}.js`}></script>
+          return <script src={`../scripts/${s.name}.js`}></script>
         }
       })
     }
@@ -99,15 +99,15 @@ else year = `-${year}`
         <button class="btn">OK</button>
       </content>
     </dialog>
-    <script src="scripts/modal.js" is:inline></script>
-    <script src="scripts/select.js" is:inline></script>
+    <script src="../scripts/modal.js" is:inline></script>
+    <script src="../scripts/select.js" is:inline></script>
     {
       scripts.map(function(s, i) {
         if (s.location !== 'head' && s.name) {
-          return <script src={`scripts/${s.name}.js`}></script>
+          return <script src={`../scripts/${s.name}.js`}></script>
         }
       })
     }
-    <!-- <script src="scripts/eruda.js" is:inline></script> -->
+    <!-- <script src="../scripts/eruda.js" is:inline></script> -->
   </body>
 </html>
