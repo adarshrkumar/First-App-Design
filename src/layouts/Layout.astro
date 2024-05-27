@@ -1,0 +1,113 @@
+---
+import '../styles/globals.scss'
+import '../styles/modal.scss'
+
+var sTitle = 'TransTrack'
+var { title, classItems, headItems, scripts } = Astro.props
+
+var docTitle = ''
+if (
+  title === 'Home' || title === '' || 
+  !!title === false || title === null
+) {
+  docTitle = sTitle
+}
+else {
+  docTitle = `${title} | ${sTitle}`
+}
+
+if (!!classItems === false || classItems === null) {
+  classItems = []
+}
+if (classItems.length < 0) {
+  classItems = []
+}
+classItems.unshift('page')
+classItems.unshift('main')
+
+classItems = classItems.join(' ')
+
+if (!!headItems === false || headItems === null) {
+  headItems = []
+}
+if (headItems.length < 0) {
+  headItems = []
+}
+
+headItems = headItems.join('')
+
+if (!!scripts === false || scripts === null) {
+  scripts = []
+}
+if (scripts.length < 0) {
+  scripts = []
+}
+
+var d = new Date()
+var year = d.getFullYear()
+var startingYear = 2024
+if (year == startingYear) year = ''
+else year = `-${year}`
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{docTitle}</title>
+    <link rel="icon" href="/assets/favicon.png" />
+    { !!headItems ? <div set:html={headItems}></div> : '' }
+    <script src="/scripts/cookies.js" is:inline></script>
+    <script src="/scripts/index.js" is:inline></script>
+    <script src="/scripts/authentication.js" is:inline></script>
+    <script src="/scripts/511Request.js" is:inline></script>
+    <script src="/scripts/notificationManager.js" is:inline></script>
+    <base href="https://adarshrkumar.github.io/forst-app-design">
+    {
+      scripts.map(function(s, i) {
+        if (s.location === 'head' && s.name) {
+          return <script src={`/scripts/${s.name}.js`}></script>
+        }
+      })
+    }
+    <script src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AkMdzF1Q7JCJCXj3415UZvH4JYRCJihZ_W7JEOnpx6eH5Hwtt1qie1LQqIrJ7-jS" async defer is:inline></script>
+  </head>
+  <body sTitle={sTitle}>
+    <div class="app">
+      <header class="header">
+        <span class="title">{title}</span>
+      </header>
+      <main id="content" class={classItems}>
+        <slot />
+      </main>
+      <footer class="footer" site-title={sTitle} current-year={year}>
+        <nav class="nav" hidden>
+          <a class="link" href="/tracker">
+            <img class="icon" src="/icons/map.svg">
+          </a>
+          <a class="link" href="/directions">
+            <img class="icon" src="/icons/location.svg">
+          </a>
+          <!-- <a class="link" href="/book"><img class="icon" src="/icons/book-online.svg"></a><a class="link" href="/notifications"><img class="icon" src="/icons/notification.svg"></a><a class="link" href="/more"><img class="icon" src="/icons/more-horiz.svg"></a><a class="link" href="/settings"><img class="icon" src="/icons/settings.svg"></a> -->
+        </nav>
+      </footer>
+    </div>
+    <dialog class="modal">
+      <content>
+        <h1 class="title"></h1>
+        <section class="message"></section>
+        <button class="btn">OK</button>
+      </content>
+    </dialog>
+    <script src="/scripts/modal.js" is:inline></script>
+    <script src="/scripts/select.js" is:inline></script>
+    {
+      scripts.map(function(s, i) {
+        if (s.location !== 'head' && s.name) {
+          return <script src={`/scripts/${s.name}.js`}></script>
+        }
+      })
+    }
+    <!-- <script src="/scripts/eruda.js" is:inline></script> -->
+  </body>
+</html>

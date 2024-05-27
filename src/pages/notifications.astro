@@ -1,0 +1,17 @@
+---
+import '../styles/menu.scss'
+import '../styles/pages/notifications.scss'
+
+import Layout from '../layouts/Layout.astro'
+
+var scripts = [
+  {
+    name: 'notifications'
+  }
+]
+---
+<Layout title="Notifications" scripts={scripts}>
+  <section class="main">
+    <div class="notifications"></div>
+  </section>
+</Layout>

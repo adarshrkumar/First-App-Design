@@ -1,0 +1,42 @@
+.main {
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+  > * {
+    max-width: 450px;
+  }
+}
+
+.logo {
+  display: block;
+}
+
+.form {
+  width: 100%;
+  display: grid;
+  gap: 2rem;
+  & > * {
+    max-width: 450px;
+  }
+}
+
+.btns {
+  --gap: 2rem;
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--gap);
+}
+
+.btn {
+  width: calc(50% - var(--gap)/2);
+  aspect-ratio: 4 / 1;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: solid 1px black;
+  font-size: 0.9lh;
+}
